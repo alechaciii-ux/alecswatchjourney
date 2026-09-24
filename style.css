@@ -282,6 +282,7 @@ body {
     color: var(--accent-gold);
     text-decoration: none;
 }
+
 /* Image Preview Modal Overlay Styling */
 .modal-overlay {
     display: none;
@@ -334,4 +335,29 @@ body {
 
 .modal-close:hover {
     color: var(--accent-gold);
+}
+
+/* Zoom Badge Overlay */
+.watch-image-container {
+    position: relative;
+}
+
+.zoom-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(13, 17, 23, 0.85);
+    color: var(--accent-gold);
+    border: 1px solid var(--border-color);
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.watch-image-container:hover .zoom-badge {
+    opacity: 1;
 }
