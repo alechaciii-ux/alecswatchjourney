@@ -887,43 +887,42 @@
 
     <!-- Modal JavaScript Logic -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            const closeBtn = document.querySelector('.modal-close');
-            const watchImages = document.querySelectorAll('.watch-img');
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.modal-close');
+        const watchImages = document.querySelectorAll('.watch-img');
 
-            watchImages.forEach(img => {
-                img.style.cursor = 'zoom-in';
-                img.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const originalSrc = img.getAttribute('src');
-                    const filename = originalSrc.split('/').pop();
-                    const hiresSrc = `images/hires/${filename}`;
-                    modal.classList.add('active');
-                    modalImg.src = hiresSrc;
-                });
-            });
-
-            closeBtn.addEventListener('click', () => {
-                modal.classList.remove('active');
-                modalImg.src = '';
-            });
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    modalImg.src = '';
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.classList.contains('active')) {
-                    modal.classList.remove('active');
-                    modalImg.src = '';
-                }
+        watchImages.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Directly use the image's existing path inside the "images" folder
+                const hiresSrc = img.getAttribute('src');
+                modal.classList.add('active');
+                modalImg.src = hiresSrc;
             });
         });
-    </script>
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            modalImg.src = '';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                modalImg.src = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                modalImg.src = '';
+            }
+        });
+    });
+</script>
 </body>
 </html>
